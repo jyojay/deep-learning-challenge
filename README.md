@@ -43,7 +43,7 @@ CSV containing more than 34,000 organisations that have received funding over th
 - After the CSV is loaded into a Pandas Dataframe, ID columns, `EIN` and `NAME` are dropped as in instructions for the initial model.
 - **IS_SUCCESSFUL** is identified as the **Target** of our model and the rest of the variables as the features.
 - Number of unique values for each column is determined.
-- Binning of **APPLICATION_TYPE** and **CLASSIFICATION** columns is performed as there are more than 10 unique values in each. For doing so, cutoff points are identified and "rare" categorical variables are binned together in a new value, Other.</br>
+- Binning of **APPLICATION_TYPE** and **CLASSIFICATION** columns is performed as there are more than 10 unique values in each. For doing so, cutoff points are identified and "rare" categorical variables are binned together in a new value, **Other**.</br>
 ![image](https://github.com/jyojay/deep-learning-challenge/assets/132628129/ac0aca93-8897-40a0-8297-e6e46039259d)
 ![image](https://github.com/jyojay/deep-learning-challenge/assets/132628129/14c4c338-985e-4419-8ef6-3ca6d497f159)
 - Categorical data are converted to numeric with `pd.get_dummies`.
@@ -56,7 +56,8 @@ CSV containing more than 34,000 organisations that have received funding over th
 - Tthe first hidden layer has an activation function `relu`and 80 neurons.
 - A second hidden layer with an activation function `relu` is created with 30 neurons.
 - Output layer is added with 1 neuron and activation function `sigmoid` since we were creating a binary classification model </br>
-![image](https://github.com/jyojay/deep-learning-challenge/assets/132628129/4529cbb3-4e4f-4377-bf62-bb3f26d7c4a9)
+![image](https://github.com/jyojay/deep-learning-challenge/assets/132628129/552cf35c-a16c-4e50-9005-7fe125c5ee65)
+
 - Structure of the model created is as below: </br>
 ![image](https://github.com/jyojay/deep-learning-challenge/assets/132628129/40b321c9-6bc6-40d3-afc4-de446b409c2b)
 - The model is compiled.
@@ -65,7 +66,90 @@ CSV containing more than 34,000 organisations that have received funding over th
 - The model is evaluated using the test data to determine the loss and accuracy.</br>
   ![image](https://github.com/jyojay/deep-learning-challenge/assets/132628129/8a0684a0-0ef8-4ede-aae2-eac737ce46b1)
   - Weights are saved every 5 epochs in `Weights` folder as file name format `weights{epoch:04d}.h5`
-#### Result:
+##### Model evaluation:
 This model with a total of 3 layers including input, output and a hidden layer with 44 input features and activation methods relu, relu and sigmoid had an accuracy of 72.5% and loss of 56%.
 - The model is saved and export to an HDF5 file: `AlphabetSoupCharity.h5`in `Models' folder
 
+### Step 3: Optimising the Model
+- Using our knowledge of TensorFlow, an effort to optimise the model to achieve a target predictive accuracy higher than 75% is made.
+- A new Jupyter Notebook file `AlphabetSoupCharity_Optimisation.ipynb` is created.
+- Dependencies qre imported and the charity_data.csv is read to a Pandas DataFrame.
+- The dataset is preprocessed as in Step 1.
+- Based on results from the initial model, four attemots are made on designing a neural network model with target predictive accuracy higher than 75%:
+**Image 1** </br>
+![image](https://github.com/jyojay/deep-learning-challenge/assets/132628129/04d787ba-3763-4668-85c7-345905de8f1b)
+
+
+### Model optimisation method 1
+#### Increasing number of layers and neurons 
+- Without changing the inputs from the previous model, number of neurons and number of layers are increased. Note: Tried many permutaitons and combinations by increasing neurons, increasing number of layers, increasing number of layers and neurons and kept one of the iterations in the step in the notebook. For details ref **Image 1** above.
+- Model structure: </br>
+![image](https://github.com/jyojay/deep-learning-challenge/assets/132628129/b19faf54-6b1a-46e4-b307-953f717990f6)
+- Model training: </br>
+![image](https://github.com/jyojay/deep-learning-challenge/assets/132628129/cf244b5d-3eb9-4c5b-b410-1fb6a9576571)
+- Model evaluation: </br>
+![image](https://github.com/jyojay/deep-learning-challenge/assets/132628129/3b40d290-c203-4edb-a4f7-69d174df46eb)
+- **Result**:
+  - No change from initial model is observed. 
+  - Note: Tried many permutaitons and combinations by increasing neurons, increasing number of layers, increasing number of layers and neurons and kept one of the iterations in the notebook. No observation had better accuracy.  
+
+### Model optimisation method 2
+#### Changing activation method and neurons
+- Without changing the inputs from the previous model, number of neurons increased. `tanh` is used instead of `relu` in one of the layers. Note: Tried many permutaitons and combinations of activation functions and neurons/layers and kept one of the iterations in the step in the notebook. For details ref **Image 1** above.
+- Model structure: </br>
+![image](https://github.com/jyojay/deep-learning-challenge/assets/132628129/76831016-435b-4bfc-8c89-0c016e68a9a9)
+- Model training: </br>
+![image](https://github.com/jyojay/deep-learning-challenge/assets/132628129/7347a71e-869b-44c3-866a-f01da996dc6e)
+- Model evaluation: </br>
+![image](https://github.com/jyojay/deep-learning-challenge/assets/132628129/8ce42547-17ff-4346-bf27-e6a1a3d71535)
+
+- **Result**:
+    - No change from previous model is observed at **72.3%** accuracy. 
+
+### Model optimisation method 3
+#### Dropping status and special considerations related columns
+- Since on analysing the unique values of each columns it was found that status and special considerations had two unique values each with very few records on one one of the two, it should not have too much contrbution to the model. I planned to check this by dropping the two columns and checking
+- No changes to the inputs from the initial model for number of layers, neurons and activation methods . For details ref **Image 1** above.
+- Model structure: </br>
+![image](https://github.com/jyojay/deep-learning-challenge/assets/132628129/100ce13e-75c1-4d2d-984d-b932eca4812e)
+- Model training: </br>
+![image](https://github.com/jyojay/deep-learning-challenge/assets/132628129/01c75503-630e-42c1-b613-eeba4841f490)
+- Model evaluation: </br>
+![image](https://github.com/jyojay/deep-learning-challenge/assets/132628129/423eca86-92d1-4ee0-b3b5-bfb82c015dc4)
+
+- **Result**:
+  - As expected no change from previous model is observed at **72.4%** accuracy.
+
+#### Method 3a - Increasing number of epochs to 200 
+- Model training: </br>
+![image](https://github.com/jyojay/deep-learning-challenge/assets/132628129/16eca264-8a32-4bcd-a9d4-f1d6ca787f3f)
+- Model evaluation: </br>
+![image](https://github.com/jyojay/deep-learning-challenge/assets/132628129/8819822c-789b-490b-b8a4-2564ff3871eb)
+- **Result**:
+   - We achieve **72.3%** accuracy which is again similar to the last models. Also to be noted that loss is **around 53%** in all above trials
+
+### Model optimisation method 4
+#### Checking Name/EID column values for duplicates (reappearance over time) and if one of them needs to be included for creating our model
+
+- We could see that names of organisation are not unique like EIN which is the sole unique identifier for this data. By dropping only EIN column we generated a model to see if it has any impact on accuracy of model when tested </br>
+![image](https://github.com/jyojay/deep-learning-challenge/assets/132628129/affaa732-b273-4351-87f1-b7d1b3cde3df) </br>
+- `NAME` was retained in the original dataset while only `EIN` was dropped.
+- Binning was performed on `NAME` to reduce number of features. For doing so, cutoff points were identified and "rare" categorical variables were binned together in a new value, **Other** </br>
+![image](https://github.com/jyojay/deep-learning-challenge/assets/132628129/5d7e63d2-c191-468c-828e-04825177a687)
+- Categorical data was converted using pd.get_dummies after all binning activities
+- No changes to the inputs from the initial model for number of layers, neurons and activation methods . For details ref **Image 1** above.
+- Model structure: </br>
+![image](https://github.com/jyojay/deep-learning-challenge/assets/132628129/e269c0b0-39dd-4524-971e-e84a107f5741)
+
+- Model training: </br>
+![image](https://github.com/jyojay/deep-learning-challenge/assets/132628129/b539a52c-37a4-47d8-81a5-904f6e47ad05)
+
+- Model evaluation: </br>
+![image](https://github.com/jyojay/deep-learning-challenge/assets/132628129/e941a6b9-b38a-449e-9352-694022ab5ddc)
+
+- **Result**:
+  - A model accuracy of **79.4%** is observed with model trained on as less as 20 epochs and 30 neurons between 3 layers with activation functions relu, relu and sigmoid. Loss has also reduced to **44.2%** 
+
+- Results are Saved and exported as an HDF5 file AlphabetSoupCharity_Optimisation.h5`.
+- Weights are also saved in csv format from first layer of method 3 and 4 at the end of model training for our evaluation.
+**Please refer to the report for more details**
