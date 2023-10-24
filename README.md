@@ -109,7 +109,7 @@ This model with a total of 3 layers including input, output and a hidden layer w
 
 ### Model optimisation method 3
 #### Dropping status and special considerations related columns
-- Since on analysing the unique values of each columns it was found that status and special considerations had two unique values each with very few records on one one of the two, it should not have too much contribution to the model. I planned to check this by dropping the two columns.
+- Since on analysing the unique values of each columns it was found that status and special considerations had two unique values each with very few records on one of the two, it should not have too much contribution to the model. I planned to check this by dropping the two columns.
 - No changes to the inputs from the initial model for number of layers, neurons and activation methods . For details ref **Image 1** above.
 - Model structure: </br>
 ![image](https://github.com/jyojay/deep-learning-challenge/assets/132628129/100ce13e-75c1-4d2d-984d-b932eca4812e)
