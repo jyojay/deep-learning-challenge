@@ -53,7 +53,7 @@ CSV containing more than 34,000 organisations that have received funding over th
   
 ### Step 2: Compile, Train, and Evaluate the Model
 - A neural network model is created by assigning the number of input features (44) and nodes for each layer using TensorFlow and Keras.
-- Tthe first hidden layer has an activation function `relu`and 80 neurons.
+- The first hidden layer has an activation function `relu`and 80 neurons.
 - A second hidden layer with an activation function `relu` is created with 30 neurons.
 - Output layer is added with 1 neuron and activation function `sigmoid` since we were creating a binary classification model </br>
 ![image](https://github.com/jyojay/deep-learning-challenge/assets/132628129/552cf35c-a16c-4e50-9005-7fe125c5ee65)
@@ -73,7 +73,7 @@ This model with a total of 3 layers including input, output and a hidden layer w
 ### Step 3: Optimising the Model
 - Using our knowledge of TensorFlow, an effort to optimise the model to achieve a target predictive accuracy higher than 75% is made.
 - A new Jupyter Notebook file `AlphabetSoupCharity_Optimisation.ipynb` is created.
-- Dependencies qre imported and the charity_data.csv is read to a Pandas DataFrame.
+- Dependencies are imported and the charity_data.csv is read to a Pandas DataFrame.
 - The dataset is preprocessed as in Step 1.
 - Based on results from the initial model, four attemots are made on designing a neural network model with target predictive accuracy higher than 75%:
 **Image 1** </br>
