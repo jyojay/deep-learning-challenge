@@ -121,7 +121,7 @@ This model with a total of 3 layers including input, output and a hidden layer w
 - **Result**:
   - As expected no change from previous model is observed at **72.4%** accuracy.
 
-#### Method 3a - Increasing number of epochs to 200 
+#### Method 3b - Increasing number of epochs to 200 
 - Model training: </br>
 ![image](https://github.com/jyojay/deep-learning-challenge/assets/132628129/16eca264-8a32-4bcd-a9d4-f1d6ca787f3f)
 - Model evaluation: </br>
