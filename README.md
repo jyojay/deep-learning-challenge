@@ -75,7 +75,8 @@ This model with a total of 3 layers including input, output and a hidden layer w
 - A new Jupyter Notebook file `AlphabetSoupCharity_Optimisation.ipynb` is created.
 - Dependencies are imported and the charity_data.csv is read to a Pandas DataFrame.
 - The dataset is preprocessed as in Step 1.
-- Based on results from the initial model, four attempts are made on designing a neural network model with target predictive accuracy higher than 75%:
+- Based on results from the initial model, four attempts are made on designing a neural network model with target predictive accuracy higher than 75%:</br>
+
 **Image 1** </br>
 ![image](https://github.com/jyojay/deep-learning-challenge/assets/132628129/04d787ba-3763-4668-85c7-345905de8f1b)
 
